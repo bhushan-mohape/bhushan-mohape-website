@@ -23,6 +23,36 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 'aarogyanova-healthcare',
+    name: 'AarogyaNova Multispeciality Clinic',
+    category: 'Healthcare Website',
+    summary: 'A feature-rich healthcare website concept — doctor profiles, appointment booking UI and a patient content library.',
+    description:
+      'AarogyaNova is a front-end concept build for a multispeciality clinic, designed to demonstrate how a full healthcare website experience — doctor listings, service departments, an appointment flow, galleries and patient resources — comes together in a single, cohesive interface. It is a front-end demonstration only: there is no backend, and all clinic details (doctors, testimonials, stats, address, contact numbers) are placeholder content rather than a real, operating clinic.',
+    technologies: ['React', 'TypeScript', 'Vite', 'Tailwind CSS'],
+    features: [
+      'Doctor directory (6 profiles) with a detailed profile modal — specialty, experience, qualifications, availability',
+      '10-department service directory in a bento-style grid',
+      'Multi-step appointment booking flow with client-side validation (front-end only — no backend or real booking)',
+      'Filterable clinic/facilities gallery with a lightbox viewer',
+      'FAQ accordion and tabbed patient-resource content',
+      'Testimonial carousel and animated stats counters (demo content, not real patient data)',
+      'Floating WhatsApp, call and book-appointment shortcuts',
+    ],
+    liveUrl: 'https://aarogyanova-healthcare-website.vercel.app/',
+    githubUrl: '',
+    caseStudy: {
+      challenge:
+        'Healthcare websites need to earn trust quickly while organizing a lot of information — doctors, departments, booking, resources — without overwhelming a visitor who may be anxious or in a hurry.',
+      approach:
+        'Treat it as a full-scope front-end build: design each piece (doctor cards, department grid, booking flow, galleries, FAQs) as its own clear, focused interaction, then bring them together into one consistent visual system.',
+      solution:
+        'Built a fully interactive React/TypeScript front end — working modals, multi-step form validation, filterable/lightbox galleries, carousels and scroll-triggered animations — all running on local component state with placeholder clinic data, since no backend or real clinic was involved.',
+      result:
+        'A complete, polished healthcare website interface that demonstrates end-to-end front-end execution across a large, varied feature set. It is a portfolio/demo build, not a live business — real deployment would mean swapping in verified clinic data and wiring up an actual backend.',
+    },
+  },
+  {
     id: 'mercury-restaurant',
     name: 'Mercury Restaurant Website',
     category: 'Restaurant Website',
@@ -95,7 +125,7 @@ export const projects: Project[] = [
       'Accessible navigation',
       'Mobile-friendly design',
     ],
-    liveUrl: '',
+    liveUrl: 'https://eknath-shinde-website.vercel.app/hi',
     githubUrl: '',
     caseStudy: {
       challenge:

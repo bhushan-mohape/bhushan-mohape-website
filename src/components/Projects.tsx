@@ -7,6 +7,13 @@ import { ProjectPreview } from './ProjectPreview'
 import { ProjectModal } from './ProjectModal'
 import { GithubIcon } from './icons/BrandIcons'
 
+/** Shared layout class for every project card — same padding, radius,
+ * border and flex structure regardless of content length, so cards in a
+ * row line up exactly. */
+const CARD_CLASS =
+  'group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface transition-all hover:-translate-y-1 hover:border-border-strong hover:shadow-[0_20px_48px_-28px_rgba(0,0,0,0.5)]'
+const CARD_BODY_CLASS = 'flex flex-1 flex-col p-6 sm:p-7'
+
 export function Projects() {
   const [activeFilter, setActiveFilter] = useState('All')
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
@@ -42,44 +49,51 @@ export function Projects() {
           </Reveal>
         ) : null}
 
-        <div className="mt-16 flex flex-col gap-16 sm:gap-20">
+        {/* items-stretch (grid's default, set explicitly) makes every card
+            in a row fill the row's full height, so with each card's own
+            flex-column + mt-auto button row, buttons land on the same
+            baseline across a row no matter how long the description or
+            feature list above them is. */}
+        <div className="mt-16 grid grid-cols-1 items-stretch gap-8 md:grid-cols-2">
           {filteredProjects.map((project, i) => (
-            <Reveal key={project.id}>
-              <article
-                className={`grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-14 ${
-                  i % 2 === 1 ? 'lg:[&>*:first-child]:order-2' : ''
-                }`}
-              >
-                <ProjectPreview projectId={project.id} name={project.name} />
+            <Reveal key={project.id} delay={(i % 2) * 80} className="h-full">
+              <article className={CARD_CLASS}>
+                <ProjectPreview projectId={project.id} name={project.name} bordered={false} />
 
-                <div>
+                <div className={CARD_BODY_CLASS}>
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
                     {project.category}
                   </p>
-                  <h3 className="mt-3 text-2xl font-semibold text-fg sm:text-3xl">{project.name}</h3>
-                  <p className="mt-4 leading-relaxed text-fg-muted">{project.description}</p>
+                  <h3 className="mt-3 text-xl font-semibold text-fg sm:text-2xl">{project.name}</h3>
+                  <p className="mt-3 min-h-[4.5rem] text-sm leading-relaxed text-fg-muted line-clamp-3">
+                    {project.description}
+                  </p>
 
-                  <ul className="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                  <ul className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
                     {project.features.slice(0, 4).map((feature) => (
                       <li key={feature} className="flex items-start gap-2 text-sm text-fg-muted">
                         <Check size={15} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
-                        {feature}
+                        <span className="line-clamp-2">{feature}</span>
                       </li>
                     ))}
                   </ul>
 
-                  <div className="mt-5 flex flex-wrap gap-2">
+                  <div className="mt-4 flex flex-wrap gap-2">
                     {project.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="rounded-full border border-border bg-surface px-3 py-1 text-xs font-medium text-fg-muted"
+                        className="rounded-full border border-border bg-bg-soft px-3 py-1 text-xs font-medium text-fg-muted"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
 
-                  <div className="mt-7 flex flex-wrap gap-3">
+                  {/* mt-auto pins this row to the bottom of the card's flex
+                      column, so it sits on the same baseline as every other
+                      card's button row in the grid regardless of how much
+                      content is above it. */}
+                  <div className="mt-auto flex flex-wrap gap-3 pt-6">
                     {project.liveUrl ? (
                       <a
                         href={project.liveUrl}
@@ -96,7 +110,7 @@ export function Projects() {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 rounded-full border border-border-strong bg-surface px-5 py-2.5 text-sm font-semibold text-fg transition-colors hover:bg-surface-2"
+                        className="inline-flex items-center gap-2 rounded-full border border-border-strong bg-surface-2 px-5 py-2.5 text-sm font-semibold text-fg transition-colors hover:bg-bg-soft"
                       >
                         <GithubIcon size={15} aria-hidden="true" />
                         GitHub

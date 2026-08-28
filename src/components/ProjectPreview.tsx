@@ -1,6 +1,10 @@
-import { UtensilsCrossed, BedDouble, Globe2, LayoutTemplate } from 'lucide-react'
+import { UtensilsCrossed, BedDouble, Globe2, LayoutTemplate, HeartPulse } from 'lucide-react'
 
 const previewConfig: Record<string, { icon: typeof UtensilsCrossed; gradient: string }> = {
+  'aarogyanova-healthcare': {
+    icon: HeartPulse,
+    gradient: 'from-[#22d3ee]/25 via-[#7c5cff]/12 to-transparent',
+  },
   'mercury-restaurant': {
     icon: UtensilsCrossed,
     gradient: 'from-[#7c5cff]/25 via-[#22d3ee]/10 to-transparent',
@@ -18,6 +22,10 @@ const previewConfig: Record<string, { icon: typeof UtensilsCrossed; gradient: st
 interface ProjectPreviewProps {
   projectId: string
   name: string
+  /** Standalone use (e.g. in the case-study modal) draws its own border/
+   * rounding/shadow. Inside a card, the card supplies that chrome instead,
+   * so the preview only needs its top corners rounded to match. */
+  bordered?: boolean
 }
 
 /**
@@ -26,12 +34,18 @@ interface ProjectPreviewProps {
  * a live site that may change over time. Swap in a real <img> once
  * up-to-date screenshots are captured.
  */
-export function ProjectPreview({ projectId, name }: ProjectPreviewProps) {
+export function ProjectPreview({ projectId, name, bordered = true }: ProjectPreviewProps) {
   const config = previewConfig[projectId] ?? { icon: LayoutTemplate, gradient: 'from-accent/20 to-transparent' }
   const Icon = config.icon
 
   return (
-    <div className="relative w-full overflow-hidden rounded-2xl border border-border bg-surface shadow-[0_30px_80px_-30px_rgba(0,0,0,0.55)]">
+    <div
+      className={
+        bordered
+          ? 'relative w-full overflow-hidden rounded-2xl border border-border bg-surface shadow-[0_30px_80px_-30px_rgba(0,0,0,0.55)]'
+          : 'relative w-full overflow-hidden rounded-t-2xl bg-surface'
+      }
+    >
       <div className="flex items-center gap-1.5 border-b border-border px-4 py-3">
         <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" aria-hidden="true" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" aria-hidden="true" />

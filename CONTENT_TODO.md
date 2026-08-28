@@ -14,10 +14,6 @@ these items are intentionally left blank rather than invented.
 - **Resume PDF** — drop the real file at `public/resume.pdf`. The
   "Download Resume" button in the About section already links to
   `/resume.pdf`; no code changes needed once the file exists.
-- **Eknath Shinde project live URL** — `src/data/projects.ts`, the
-  `public-facing-website-concept` entry has `liveUrl: ''`, which hides the
-  "Live Website" button. Add the real URL once confirmed appropriate to link
-  publicly.
 
 ## Verify
 
@@ -38,6 +34,11 @@ these items are intentionally left blank rather than invented.
 - **GitHub repo links** — add `githubUrl` values in `src/data/projects.ts`
   for the Mercury Restaurant Website and Hotel Website Template projects if
   the repos are public. Leave blank to keep the GitHub button hidden.
+- **AarogyaNova GitHub link** — `github.com/bhushan-mohape/aarogyanova-healthcare-website`
+  exists but is empty (nothing pushed yet), so `githubUrl` is blank on that
+  project entry in `src/data/projects.ts`. Push the actual code to that
+  repo, then set `githubUrl: 'https://github.com/bhushan-mohape/aarogyanova-healthcare-website'`
+  to turn the GitHub button back on.
 - **Contact form backend** — set `VITE_FORM_ENDPOINT` (see `.env.example`)
   to a Formspree endpoint or custom API to enable real online submissions.
   Until set, the form opens the visitor's email client instead.
