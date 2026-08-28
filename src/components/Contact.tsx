@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react'
-import { Mail, Phone, Send, Info } from 'lucide-react'
+import { Mail, Phone, Send, Info, Copy, Check } from 'lucide-react'
 import { site, whatsappUrl } from '../data/site'
 import { LinkedinIcon, GithubIcon, WhatsappIcon } from './icons/BrandIcons'
 import { Reveal } from './Reveal'
@@ -15,11 +15,28 @@ const projectTypes = [
   'Other',
 ]
 
-type Status = 'idle' | 'submitting' | 'success' | 'error'
+// 'fallback' = no backend configured, so we couldn't confirm delivery —
+// distinct from 'success', which is only used once a real backend
+// (Formspree/API) confirms the submission actually went through.
+type Status = 'idle' | 'submitting' | 'success' | 'fallback' | 'error'
 
 export function Contact() {
   const [status, setStatus] = useState<Status>('idle')
+  const [fallbackMessage, setFallbackMessage] = useState('')
+  const [copied, setCopied] = useState(false)
   const hasBackend = Boolean(site.formEndpoint)
+
+  async function copyFallbackMessage(text: string) {
+    try {
+      await navigator.clipboard.writeText(text)
+      setCopied(true)
+    } catch {
+      // Clipboard API can throw (permissions, insecure context, etc.) —
+      // the message is still shown on screen for manual copy, so this
+      // isn't fatal, just skip the "copied" confirmation.
+      setCopied(false)
+    }
+  }
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -51,17 +68,24 @@ export function Contact() {
       return
     }
 
-    // No backend configured: fall back to opening the visitor's email
-    // client with a pre-filled message, rather than pretending the
-    // message was delivered.
+    // No backend configured. window.location.href = 'mailto:...' only
+    // works if the visitor's browser/OS has a mail client registered as
+    // the default handler — there's no reliable way to detect whether
+    // that actually happened, so we can't claim success from it alone.
+    // We still attempt it (best-effort), but the message is always also
+    // shown on screen + copied to the clipboard, so the inquiry is never
+    // silently lost even when no mail app opens.
+    const plainMessage = `Name: ${name}\nEmail: ${email}\nBusiness / Company: ${company || '—'}\nProject Type: ${
+      projectType || '—'
+    }\n\nMessage:\n${message}`
     const subject = encodeURIComponent(`Project Inquiry: ${projectType || 'New Project'} — from ${name}`)
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nBusiness / Company: ${company || '—'}\nProject Type: ${
-        projectType || '—'
-      }\n\nMessage:\n${message}`,
-    )
+    const body = encodeURIComponent(plainMessage)
     window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`
-    setStatus('success')
+
+    setFallbackMessage(plainMessage)
+    setCopied(false)
+    setStatus('fallback')
+    void copyFallbackMessage(plainMessage)
   }
 
   return (
@@ -195,8 +219,9 @@ export function Contact() {
               {!hasBackend ? (
                 <p className="flex items-start gap-2 text-xs leading-relaxed text-fg-subtle">
                   <Info size={14} className="mt-0.5 shrink-0" aria-hidden="true" />
-                  This form currently opens your email client with your message pre-filled, sent directly to{' '}
-                  {site.email}. Online form submission will be enabled soon.
+                  Online form submission isn&rsquo;t connected yet — this will try to open your email app
+                  addressed to {site.email}, and always shows your message on screen (and copies it) as a
+                  backup in case nothing opens.
                 </p>
               ) : null}
 
@@ -209,16 +234,41 @@ export function Contact() {
                 <Send size={15} aria-hidden="true" />
               </button>
 
-              {status === 'success' && hasBackend ? (
+              {status === 'success' ? (
                 <p className="text-sm font-medium text-emerald-400">
                   Thanks — your project inquiry was sent successfully.
                 </p>
               ) : null}
-              {status === 'success' && !hasBackend ? (
-                <p className="text-sm font-medium text-emerald-400">
-                  Your email client should now be open with your message ready to send.
-                </p>
+
+              {status === 'fallback' ? (
+                <div className="rounded-xl border border-border bg-bg-soft p-4">
+                  <p className="text-sm font-medium text-fg">
+                    We tried to open your email app with this pre-filled — if nothing opened,
+                    {copied ? ' your message was also copied to your clipboard, so you can' : ' you can'} paste
+                    it into an email to{' '}
+                    <a href={`mailto:${site.email}`} className="text-accent underline underline-offset-2">
+                      {site.email}
+                    </a>
+                    .
+                  </p>
+                  <textarea
+                    readOnly
+                    value={fallbackMessage}
+                    rows={5}
+                    onFocus={(e) => e.currentTarget.select()}
+                    className="mt-3 w-full resize-none rounded-lg border border-border bg-bg px-3 py-2 text-xs leading-relaxed text-fg-muted"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => copyFallbackMessage(fallbackMessage)}
+                    className="mt-3 inline-flex items-center gap-2 rounded-full border border-border-strong px-4 py-2 text-xs font-semibold text-fg transition-colors hover:bg-surface-2"
+                  >
+                    {copied ? <Check size={14} aria-hidden="true" /> : <Copy size={14} aria-hidden="true" />}
+                    {copied ? 'Copied' : 'Copy message'}
+                  </button>
+                </div>
               ) : null}
+
               {status === 'error' ? (
                 <p className="text-sm font-medium text-red-400">
                   Something went wrong sending your inquiry. Please email {site.email} directly.
