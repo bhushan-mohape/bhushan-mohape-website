@@ -15,6 +15,19 @@ these items are intentionally left blank rather than invented.
   "Download Resume" button in the About section already links to
   `/resume.pdf`; no code changes needed once the file exists.
 
+## Needs a manual step on your end
+
+- **Enable Vercel Analytics** — the `<Analytics />` component (from
+  `@vercel/analytics`) is already wired into `src/main.tsx`, but it only
+  starts collecting data once you enable Web Analytics for this project in
+  the Vercel dashboard: Project → Analytics tab → Enable. Free on the
+  Hobby plan (with a monthly event cap). Once enabled, visit counts, top
+  pages, referrers, countries and devices show up in that same tab — it's
+  aggregate/anonymous only, not tied to a visitor's identity.
+- **Formspree endpoint** — see the "Contact form backend" item below; this
+  is the other half of "know who's interested" (an email the moment
+  someone actually submits the form, with their info).
+
 ## Verify
 
 - **WhatsApp number** — `src/data/site.ts` has `whatsappNumber: '919967482339'`,
