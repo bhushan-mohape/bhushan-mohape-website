@@ -28,9 +28,14 @@ export function Hero() {
             Web Developer &middot; Frontend Developer
           </span>
 
-          <h1 className="text-4xl font-semibold leading-[1.08] tracking-tight text-fg text-balance sm:text-5xl lg:text-[3.4rem]">
-            I Build Modern Websites That{' '}
-            <span className="text-gradient">Help Businesses Stand Out.</span>
+          <h1 className="flex flex-col gap-2 text-fg">
+            <span className="font-display text-base font-semibold uppercase tracking-[0.2em] text-accent sm:text-lg">
+              Bhushan Mohape
+            </span>
+            <span className="text-4xl font-semibold leading-[1.08] tracking-tight text-balance sm:text-5xl lg:text-[3.4rem]">
+              I Build Modern Websites That{' '}
+              <span className="text-gradient">Help Businesses Stand Out.</span>
+            </span>
           </h1>
 
           <p className="max-w-xl text-base leading-relaxed text-fg-muted sm:text-lg">

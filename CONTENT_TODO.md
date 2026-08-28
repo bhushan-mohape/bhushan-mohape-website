@@ -24,6 +24,14 @@ these items are intentionally left blank rather than invented.
 - **WhatsApp number** — `src/data/site.ts` has `whatsappNumber: '919967482339'`,
   assuming the +91 (India) country code for the number you gave
   (9967482339). Confirm that's correct; if not, edit that one value.
+- **Submit sitemap to Google Search Console** — `public/sitemap.xml` is
+  ready, but actually submitting it (and requesting indexing) requires you
+  to verify site ownership in Search Console and submit it there — that's
+  a manual step in Google's console, not something committable to the repo.
+- **Location claim** — `index.html` (meta description + JSON-LD) and
+  `public/sitemap.xml`/`robots.txt` now state "Thane, Maharashtra" as your
+  base, per your instruction. Update `Thane`/`Maharashtra` in `index.html`
+  if that ever changes.
 
 ## Nice to have
 
