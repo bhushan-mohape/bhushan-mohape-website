@@ -138,6 +138,35 @@ export const projects: Project[] = [
         'A structured, multilingual, mobile-friendly public-facing website concept demonstrating frontend development for content-heavy, accessibility-conscious projects.',
     },
   },
+  {
+    id: 'akshay-chavan-website',
+    name: 'Akshay Chavan — Digital Creator Website',
+    category: 'Personal Brand Website',
+    summary: 'A personal brand website for an Instagram reel creator — bio, stats, reel showcase and brand collaborations.',
+    description:
+      'A personal brand website built for Akshay Chavan, a digital creator known for his Instagram reels, designed to give him a professional web presence beyond social media for brands and followers to discover his work. The site introduces him with a bio and creator stats, showcases his reels in a video gallery, highlights past brand collaborations, and makes it easy for brands and followers to get in touch or follow him on social media.',
+    technologies: ['React', 'TypeScript', 'Vite', 'Tailwind CSS'],
+    features: [
+      'Creator bio section with stats (followers, views, reels)',
+      'Reel/video showcase gallery embedding his Instagram content',
+      'Brand collaboration section highlighting past partnerships',
+      'Contact/inquiry section for brand outreach',
+      'Social media links to Instagram and other platforms',
+      'Responsive, mobile-first layout suited to a social-first audience',
+    ],
+    liveUrl: 'https://akshay-chavan-website.vercel.app/',
+    githubUrl: '',
+    caseStudy: {
+      challenge:
+        'A social media creator’s work lives on platforms he doesn’t own — he needed a single, professional home that presents his reach and past collaborations credibly to brands, without depending on any one app.',
+      approach:
+        'Design the site around what brands actually look for first — audience stats and proof of past collaborations — while keeping the reel content itself front and center, and make the path to contact effortless.',
+      solution:
+        'Built a responsive React/TypeScript site with a stats-led bio, an embedded reel showcase gallery, a dedicated brand-collaboration section and clear contact/social links, all styled for a social-first, mobile-heavy audience.',
+      result:
+        'A polished, self-owned digital presence that lets Akshay Chavan present his content, reach and brand history in one place, independent of any single social platform.',
+    },
+  },
 ]
 
 export const projectCategories = ['All', ...Array.from(new Set(projects.map((p) => p.category)))]
