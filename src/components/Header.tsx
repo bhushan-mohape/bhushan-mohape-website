@@ -75,7 +75,7 @@ export function Header() {
           isMenuOpen ? 'max-h-[28rem] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <nav className="glass border-t border-border px-5 pb-6 pt-2 sm:px-8" aria-label="Mobile">
+        <nav className="bg-surface border-t border-border px-5 pb-6 pt-2 sm:px-8" aria-label="Mobile">
           <ul className="flex flex-col gap-1">
             {navLinks.map((link) => (
               <li key={link.href}>
