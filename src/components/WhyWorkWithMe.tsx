@@ -40,7 +40,7 @@ export function WhyWorkWithMe() {
   return (
     <section className="py-24 sm:py-32 bg-bg-soft border-y border-border">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-        <SectionHeading kicker="Why Me" title="Why Businesses Choose a Modern Web Developer" />
+        <SectionHeading kicker="Why Us" title="Why Businesses Choose Us" />
 
         <div className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {reasons.map((reason, i) => (

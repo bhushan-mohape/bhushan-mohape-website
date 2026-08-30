@@ -7,9 +7,7 @@ import {
   Plug,
   Rocket,
   Gauge,
-  Download,
 } from 'lucide-react'
-import { site } from '../data/site'
 import { Reveal } from './Reveal'
 import { SectionHeading } from './SectionHeading'
 
@@ -32,7 +30,7 @@ export function About() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
         <SectionHeading
           kicker="About"
-          title="More Than Just Code. I Build Digital Experiences."
+          title="More Than Just Code. We Build Digital Experiences."
           align="center"
         />
 
@@ -80,23 +78,14 @@ export function About() {
                 hosting and deployment.
               </p>
               <p className="leading-relaxed text-fg-muted">
-                Bhushan is currently a Senior Associate at Cognizant. Before that, he worked as an Advisory
-                System Analyst at IBM, an Associate Consultant at Capgemini, and a Software Engineer at
-                Majesco &mdash; working with React, Redux and JSON-based data across these roles.
+                With several years of hands-on, professional software development experience under his belt,
+                Bhushan brings a practical, production-tested approach to every project &mdash; writing clean,
+                reliable code and shipping work that holds up in the real world, not just in a demo.
               </p>
-
-              <a
-                href={site.resumeUrl}
-                download
-                className="mt-2 inline-flex w-fit items-center gap-2 rounded-full border border-border-strong bg-surface px-5 py-2.5 text-sm font-semibold text-fg transition-colors hover:bg-surface-2"
-              >
-                <Download size={16} aria-hidden="true" />
-                Download Resume
-              </a>
             </Reveal>
 
             <Reveal delay={120} className="mt-10">
-              <h3 className="text-sm font-semibold uppercase tracking-[0.15em] text-fg-subtle">What I Do</h3>
+              <h3 className="text-sm font-semibold uppercase tracking-[0.15em] text-fg-subtle">What We Do</h3>
               <ul className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {whatIDo.map((item) => (
                   <li

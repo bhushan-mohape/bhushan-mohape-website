@@ -11,9 +11,6 @@ these items are intentionally left blank rather than invented.
   in `src/data/site.ts`, the canonical/OG tags in `index.html`, and the URLs
   in `public/robots.txt` and `public/sitemap.xml` (currently all point at
   the placeholder `https://bhushan-mohape-website.vercel.app`).
-- **Resume PDF** — drop the real file at `public/resume.pdf`. The
-  "Download Resume" button in the About section already links to
-  `/resume.pdf`; no code changes needed once the file exists.
 
 ## Needs a manual step on your end
 

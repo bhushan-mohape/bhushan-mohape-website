@@ -2,9 +2,9 @@
  * Central, editable site configuration.
  *
  * Everything that might change (contact details, social links, domain,
- * resume file, form endpoint) lives here so the rest of the codebase never
- * hardcodes it. See CONTENT_TODO.md for a checklist of items to verify or
- * fill in before/after launch.
+ * form endpoint) lives here so the rest of the codebase never hardcodes it.
+ * See CONTENT_TODO.md for a checklist of items to verify or fill in
+ * before/after launch.
  */
 
 export const site = {
@@ -33,17 +33,11 @@ export const site = {
   whatsappNumber: '919967482339',
   whatsappMessage: "Hi Bhushan, I'd like to talk about a website project.",
 
+  // Leave empty to hide the corresponding icon in the Footer and Contact section.
   social: {
-    linkedin: 'https://linkedin.com/in/bhushanmohape',
-    github: 'https://github.com/bhushan-mohape',
+    linkedin: '',
+    github: '',
   },
-
-  /**
-   * Drop the real PDF at /public/resume.pdf (so it is served from
-   * /resume.pdf) and this link starts working automatically — no code
-   * changes required.
-   */
-  resumeUrl: '/resume.pdf',
 
   /**
    * Optional form backend. Leave empty to keep the contact form in

@@ -94,7 +94,7 @@ export function Contact() {
         <SectionHeading
           kicker="Contact"
           title="Let’s Build Something Great"
-          description="Tell me about your project and I'll get back to you."
+          description="Tell us about your project and we'll get back to you."
         />
 
         <div className="mt-16 grid grid-cols-1 gap-10 lg:grid-cols-5 lg:gap-14">
@@ -212,7 +212,7 @@ export function Contact() {
                   required
                   rows={5}
                   className="resize-none rounded-xl border border-border bg-bg-soft px-4 py-3 text-sm text-fg outline-none transition-colors focus:border-accent"
-                  placeholder="Tell me a bit about your project, timeline and goals."
+                  placeholder="Tell us a bit about your project, timeline and goals."
                 />
               </div>
 

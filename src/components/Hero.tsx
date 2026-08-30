@@ -33,14 +33,14 @@ export function Hero() {
               Bhushan Mohape
             </span>
             <span className="text-4xl font-semibold leading-[1.08] tracking-tight text-balance sm:text-5xl lg:text-[3.4rem]">
-              I Build Modern Websites That{' '}
+              We Build Modern Websites That{' '}
               <span className="text-gradient">Help Businesses Stand Out.</span>
             </span>
           </h1>
 
           <p className="max-w-xl text-base leading-relaxed text-fg-muted sm:text-lg">
-            I&rsquo;m Bhushan Mohape, a professional Web Developer specializing in modern, responsive and
-            high-performance digital experiences using React and modern web technologies.
+            I&rsquo;m Bhushan Mohape &mdash; we build modern, responsive and high-performance digital
+            experiences using React and modern web technologies.
           </p>
 
           <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
@@ -48,7 +48,7 @@ export function Hero() {
               href="#projects"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-accent-solid px-6 py-3.5 text-sm font-semibold text-white transition-all hover:bg-accent-solid-hover hover:shadow-[0_0_0_4px_var(--color-accent-soft)]"
             >
-              View My Work
+              View Our Work
               <ArrowRight size={16} aria-hidden="true" />
             </a>
             <a

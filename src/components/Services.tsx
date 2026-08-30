@@ -30,7 +30,7 @@ export function Services() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
         <SectionHeading
           kicker="Services"
-          title="How I Can Help Your Business"
+          title="How We Can Help Your Business"
           description="Website development services tailored to what your business actually needs, built with modern, maintainable technology."
         />
 

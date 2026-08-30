@@ -31,7 +31,7 @@ export function CTA() {
                   href="#projects"
                   className="inline-flex items-center justify-center gap-2 rounded-full border border-border-strong bg-surface-2 px-7 py-3.5 text-sm font-semibold text-fg transition-colors hover:bg-bg-soft"
                 >
-                  View My Work
+                  View Our Work
                 </a>
               </div>
             </div>

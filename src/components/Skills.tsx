@@ -50,7 +50,7 @@ export function Skills() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
         <SectionHeading
           kicker="Skills"
-          title="Technology I Work With"
+          title="Technology We Work With"
           description="A focused toolkit for building modern, production-ready websites and applications."
         />
 
