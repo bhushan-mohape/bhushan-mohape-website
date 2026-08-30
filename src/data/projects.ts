@@ -97,7 +97,7 @@ export const projects: Project[] = [
       'Photo gallery',
       'Contact information section',
     ],
-    liveUrl: 'https://bhushan-mohape.github.io/hotel-website-template/',
+    liveUrl: 'https://hotel-website-template-two.vercel.app/',
     githubUrl: '',
     caseStudy: {
       challenge:
